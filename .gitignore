@@ -1,0 +1,44 @@
+# Build output
+bin/
+obj/
+publish/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+.vs/
+.vscode/
+.idea/
+*.swp
+
+# Local settings and secrets
+appsettings.Local.json
+appsettings.*.Local.json
+*.pfx
+.env
+
+# Logs
+logs/
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test results and coverage
+TestResults/
+coverage/
+*.trx
+*.coverage
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
