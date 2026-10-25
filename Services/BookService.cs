@@ -1,4 +1,5 @@
 using BookStoreApi.Data;
+using BookStoreApi.Dtos;
 using BookStoreApi.Models;
 
 using Dapper;
@@ -31,5 +32,17 @@ public class BookService(
             WHERE Id = @Id
             """;
         return await conn.QuerySingleAsync<Book>(sql, new { Id = id });
+    }
+
+    public async Task<Book> Search(BookSearchRequest request)
+    {
+        logger.LogInformation("Search book with id {id} from database.", request.Id);
+        using var conn = connectionFactory.Create();
+        const string sql = """
+            SELECT Id, Title, Author, Price, CreatedAt
+            FROM Books
+            WHERE Id = @Id
+            """;
+        return await conn.QuerySingleAsync<Book>(sql, new { request.Id });
     }
 }

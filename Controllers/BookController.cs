@@ -1,3 +1,4 @@
+using BookStoreApi.Dtos;
 using BookStoreApi.Models;
 using BookStoreApi.Services;
 
@@ -22,4 +23,8 @@ public class BookController(BookService bookService) : ControllerBase
         var book = await bookService.GetBook(id);
         return Ok(book);
     }
+
+    [AcceptVerbs("QUERY")]
+    public async Task<ActionResult<Book>> SearchBook([FromBody] BookSearchRequest request)
+        => Ok(await bookService.Search(request));
 }
