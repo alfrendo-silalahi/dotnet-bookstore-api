@@ -6,7 +6,7 @@ namespace BookStoreApi.Controllers;
 
 [ApiController]
 [Route("api/v1/books")]
-public class BookController(BookService bookService): ControllerBase
+public class BookController(BookService bookService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Book>>> GetBooks()

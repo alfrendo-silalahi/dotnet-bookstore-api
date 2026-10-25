@@ -1,7 +1,6 @@
 using BookStoreApi.Data;
 using BookStoreApi.Models;
 using Dapper;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreApi.Services;
 
@@ -17,7 +16,7 @@ public class BookService(IDbConnectionFactory connectionFactory)
         return await conn.QueryAsync<Book>(sql);
     }
 
-    public async Task<Book> GetBook(int id)
+    public async Task<Book?> GetBook(int id)
     {
         using var conn = connectionFactory.Create();
         const string sql = """
@@ -25,6 +24,6 @@ public class BookService(IDbConnectionFactory connectionFactory)
             FROM Books
             WHERE Id = @Id
             """;
-        return await conn.QueryFirstAsync<Book>(sql, new {Id = id});
+        return await conn.QuerySingleAsync<Book>(sql, new { Id = id });
     }
 }

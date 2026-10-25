@@ -1,5 +1,4 @@
 using System.Data;
-using BookStoreApi.Data;
 using Microsoft.Data.SqlClient;
 
 namespace BookStoreApi.Data;
