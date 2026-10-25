@@ -1,6 +1,7 @@
-using BookStoreApi.Services;
-using BookStoreApi.Data;
 using BookStoreApi;
+using BookStoreApi.Data;
+using BookStoreApi.Services;
+
 using Microsoft.Extensions.Logging.Console;
 
 var builder = WebApplication.CreateBuilder(args);
