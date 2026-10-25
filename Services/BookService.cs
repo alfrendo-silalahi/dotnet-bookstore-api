@@ -4,10 +4,14 @@ using Dapper;
 
 namespace BookStoreApi.Services;
 
-public class BookService(IDbConnectionFactory connectionFactory)
+public class BookService(
+    IDbConnectionFactory connectionFactory,
+    ILogger<BookService> logger
+)
 {
     public async Task<IEnumerable<Book>> GetBooks()
     {
+        logger.LogInformation("Get books from database.");
         using var conn = connectionFactory.Create();
         const string sql = """
             SELECT Id, Title, Author, Price, CreatedAt
@@ -18,6 +22,7 @@ public class BookService(IDbConnectionFactory connectionFactory)
 
     public async Task<Book?> GetBook(int id)
     {
+        logger.LogInformation("Get book with id {Id} from database.", id);
         using var conn = connectionFactory.Create();
         const string sql = """
             SELECT Id, Title, Author, Price, CreatedAt
